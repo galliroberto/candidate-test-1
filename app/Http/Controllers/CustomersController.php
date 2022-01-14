@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Customer\StoreCustomerRequest;
 use App\Http\Requests\Customer\UpdateCustomerRequest;
-use App\Http\Services\Customer\DeleteCustomerService;
-use App\Http\Services\Customer\StoreCustomerService;
-use App\Http\Services\Customer\UpdateCustomerService;
+use App\Services\Customer\DeleteCustomerService;
+use App\Services\Customer\StoreCustomerService;
+use App\Services\Customer\UpdateCustomerService;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 

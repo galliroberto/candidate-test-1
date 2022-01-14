@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Order\StoreOrderRequest;
 use App\Http\Requests\Order\UpdateOrderRequest;
-use App\Http\Services\Order\StoreOrderService;
-use App\Http\Services\Order\DeleteOrderService;
-use App\Http\Services\Order\UpdateOrderService;
+use App\Services\Order\StoreOrderService;
+use App\Services\Order\DeleteOrderService;
+use App\Services\Order\UpdateOrderService;
 use App\Models\Contract;
 use App\Models\Customer;
 use App\Models\Order;

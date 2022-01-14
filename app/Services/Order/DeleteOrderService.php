@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Services\Order;
+namespace App\Services\Order;
 
 use App\Models\Order;
 use Carbon\Carbon;
