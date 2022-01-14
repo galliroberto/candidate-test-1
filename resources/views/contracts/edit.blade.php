@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
-  <form action="{{ route('customers.update', $customer) }}" method="POST">
+  <form action="{{ route('contracts.update', $contract) }}" method="POST">
     @csrf
     @method('PUT')
-    @include('customers._form')
+    @include('contracts._form')
     <button type="submit" class="btn btn-warning">Update</button>
   </form>
 @stop

@@ -1,11 +1,10 @@
 <?php
 
-use App\Models\Tag;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateTagsTable extends Migration
+class CreateOrdersTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +13,13 @@ class CreateTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tags', function (Blueprint $table) {
+        Schema::create('orders_tags', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->unsignedInteger('order_id')->index();
+            $table->unsignedInteger('tag_id')->index();
             $table->timestamps();
             $table->softDeletes();
         });
-
-        factory(Tag::class, 10)->create();
     }
 
     /**
@@ -31,6 +29,6 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tags');
+        Schema::dropIfExists('orders_tags');
     }
 }

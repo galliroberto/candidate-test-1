@@ -37,7 +37,10 @@
                             <a class="nav-link" href="{{ route('customers.index') }}">Customers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Orders</a>
+                            <a class="nav-link" href="{{ route('orders.index') }}">Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('contracts.index') }}">Contracts</a>
                         </li>
                     </ul>
 

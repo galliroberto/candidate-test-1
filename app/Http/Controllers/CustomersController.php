@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Customer\StoreCustomerRequest;
+use App\Http\Requests\Customer\UpdateCustomerRequest;
+use App\Http\Services\Customer\DeleteCustomerService;
+use App\Http\Services\Customer\StoreCustomerService;
+use App\Http\Services\Customer\UpdateCustomerService;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -33,9 +38,9 @@ class CustomersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCustomerService $storeCustomerService, StoreCustomerRequest $request)
     {
-        $customer = Customer::create($request->all());
+        $customer = $storeCustomerService->execute($request);
 
         return redirect()->route('customers.edit', $customer)->withMessage('Customer created successfully.');
     }
@@ -58,11 +63,11 @@ class CustomersController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(UpdateCustomerService $updateCustomerService,UpdateCustomerRequest $request, Customer $customer)
     {
-        $customer->update($request->all());
+        $updateCustomerService->execute($customer, $request);
 
-        return view('customers.edit', compact('customer'))->withMessage('Customer updated successfully.');
+        return redirect()->route('customers.edit', $customer)->withMessage('Customer updated successfully.');
     }
 
     /**
@@ -71,9 +76,9 @@ class CustomersController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy(DeleteCustomerService $deleteCustomerService, Customer $customer)
     {
-        $customer->delete();
+        $deleteCustomerService->execute($customer);
 
         return redirect()->route('customers.index')->withMessage('Customer deleted successfully');
     }
